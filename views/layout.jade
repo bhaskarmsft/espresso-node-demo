@@ -1,0 +1,35 @@
+doctype html
+html
+	head
+		title="EntroSpect"
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+		link(rel='stylesheet', href='/stylesheets/jquery-ui.structure.min.css')
+		link(rel='stylesheet', href='/stylesheets/jquery-ui.theme.min.css')
+		link(rel='stylesheet', href='/stylesheets/metro-bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/metro-bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='/stylesheets/iconFont.min.css')
+		link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+
+		script(type='text/JavaScript', src='/scripts/underscore.min.js')
+		script(type='text/JavaScript', src='/scripts/jquery-2.1.1.min.js')
+		script(type='text/JavaScript', src='/scripts/jquery-ui.min.js')
+		script(type='text/JavaScript', src='/scripts/metro.min.js')
+		script(type='text/JavaScript', src='/scripts/angular.min.js')
+		script(type='text/JavaScript', src='/scripts/angular-route.min.js')
+		script(type='text/JavaScript', src='/scripts/app.js')
+		script(type='text/JavaScript', src='/scripts/config.js')
+		script(type='text/JavaScript', src='/scripts/routes.js')
+	body
+		div(id="container" class="metro" ng-app="Application")
+			div(class="grid")
+				div(id="header" class="row bg-darkTeal")
+					include ./templates/header.jade
+				div(id="content" class="row")
+					div(class="container")
+						div(class="grid")
+							div(class="row")
+								include ./templates/employees.jade
+								include ./templates/customers.jade
+							div(class="row")
+								include ./templates/purchaseOrders.jade
