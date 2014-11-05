@@ -1,9 +1,22 @@
 {
   "name": "entrospect",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "A sample application built on top of an API generated with Espresso Logic.",
   "scripts": {
     "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EspressoLogicCafe/entrospect.git"
+  },
+  "keywords": [
+    "Espresso",
+    "Logic",
+    "Espresso Logic",
+    "Entrospect"
+  ],
+  "bugs": {
+    "url": "https://github.com/EspressoLogicCafe/entrospect/issues"
   },
   "dependencies": {
     "express": "~4.9.0",
@@ -12,7 +25,10 @@
     "morgan": "~1.3.0",
     "serve-favicon": "~2.1.6",
     "debug": "~2.0.0",
-    "jade": "~1.6.0"
+    "jade": "~1.6.0",
+    "espressologic": "~1.2.1",
+    "q": "~1.0.1",
+    "underscore": "~1.7.0"
   },
   "author": "espressologic",
   "license": "BSD-2-Clause"

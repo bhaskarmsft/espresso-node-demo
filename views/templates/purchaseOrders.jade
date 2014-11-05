@@ -1,2 +1,15 @@
-div(class="table-box span12")
-	p Purchase Orders
+div(class="span4")
+	h5 Purchase Orders
+	div(class="" ng-controller="PurchaseOrdersCtrl")
+		table(class="table bordered")
+			thead
+				tr
+					td Order Number
+					td Total
+					td Paid
+			tbody
+				tr(ng-repeat="order in data.orders" ng-click="controls.setActiveOrder(order.order_number)")
+					td(class="numeric-column") {{order.order_number}}
+					td(class="numeric-column") ${{order.amount_total}}
+					td {{order.paid}}
+		button(class="btn default hide float-right" ng-click="controls.addOrder()") Add Purchase Order

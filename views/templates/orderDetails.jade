@@ -1,0 +1,45 @@
+div(class="span8" ng-controller="OrderDetailsCtrl")
+	div(class="grid fluid")
+		div(class="row margin-top-0")
+			div(class="span6")
+				h3 Order \#{{data.order.order_number}}
+			div(class="span6")
+				h3(ng-if="data.order.paid" class="text-success float-right") {{data.status}} ${{data.order.amount_total}} 
+					input(ng-model="data.order.paid" type="checkbox")
+				h3(ng-if="!data.order.paid" class="text-alert float-right") {{data.status}} ${{data.order.amount_total}} 
+					input(ng-model="data.order.paid" type="checkbox")
+		div(class="row")
+			div(class="span12" ng-if="!params.editMode")
+				p(ng-if="data.order.notes") {{data.order.notes}}
+				p(ng-if="!data.order.notes") - No Details
+			div(class="span12" ng-if="params.editMode")
+				textarea(ng-model="data.order.notes" class="full-width min-h-150")
+			button(class="btn inverse float-right margin-top-15" ng-click="controls.editOrderNote()") Edit Notes
+		div(class="row")
+			div(class="span12")
+				table(class="table striped")
+					thead
+						tr
+							td Product
+							td Quantity
+							td Price/Item
+							td Line Total
+							td Actions
+					tbody
+						tr(ng-repeat="lineItem in data.order.LineItems")
+							td {{lineItem.Product.name}}
+							td(class="numeric-column") {{lineItem.qty_ordered}}
+							td(class="numeric-column") ${{lineItem.product_price}}
+							td(class="numeric-column") ${{lineItem.amount}}
+							td
+								button(class="btn inverse" ng-click="controls.editLineItem($index)") Edit
+								span  
+								button(class="btn danger" ng-click="controls.delLineItem($index)") Delete
+		div(class="row")
+			div(class="span12")
+				div(class="float-left")
+					button(class="btn default" ng-click="controls.addLineItem()") Add Line Item
+				div(class="float-right")
+					button(class="btn danger hide" ng-click="controls.delOrder()") Delete Purchase Order
+					span  
+					button(class="btn primary" ng-click="controls.saveOrder()") Save Purchase Order

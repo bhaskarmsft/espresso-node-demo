@@ -2,6 +2,8 @@ doctype html
 html
 	head
 		title="EntroSpect"
+
+		//dependent css
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
 		link(rel='stylesheet', href='/stylesheets/jquery-ui.structure.min.css')
@@ -11,25 +13,35 @@ html
 		link(rel='stylesheet', href='/stylesheets/iconFont.min.css')
 		link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
 
+		//dependent scripts
 		script(type='text/JavaScript', src='/scripts/underscore.min.js')
 		script(type='text/JavaScript', src='/scripts/jquery-2.1.1.min.js')
 		script(type='text/JavaScript', src='/scripts/jquery-ui.min.js')
 		script(type='text/JavaScript', src='/scripts/metro.min.js')
 		script(type='text/JavaScript', src='/scripts/angular.min.js')
 		script(type='text/JavaScript', src='/scripts/angular-route.min.js')
+
+		//bootstrap application
 		script(type='text/JavaScript', src='/scripts/app.js')
 		script(type='text/JavaScript', src='/scripts/config.js')
 		script(type='text/JavaScript', src='/scripts/routes.js')
-	body
+
+		//set customers queried from the API
+		script(type="text/JavaScript") var customers = !{JSON.stringify(customers)};
+
+		//app scripts
+		script(type='text/JavaScript', src='/scripts/controllers/PurchaseOrdersCtrl.js')
+		script(type='text/JavaScript', src='/scripts/controllers/OrderDetailsCtrl.js')
+		script(type='text/JavaScript', src='/scripts/controllers/LineItemCtrl.js')
+
+	body(id="body")
 		div(id="container" class="metro" ng-app="Application")
 			div(class="grid")
 				div(id="header" class="row bg-darkTeal")
 					include ./templates/header.jade
 				div(id="content" class="row")
-					div(class="container")
+					div(class="container span12")
 						div(class="grid")
 							div(class="row")
-								include ./templates/employees.jade
-								include ./templates/customers.jade
-							div(class="row")
 								include ./templates/purchaseOrders.jade
+								include ./templates/orderDetails.jade
