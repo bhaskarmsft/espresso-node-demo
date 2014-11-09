@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 });
 
 /* Purchase Orders Request */
-router.post('/customerPurchaseOrders', function (req, res) {
+router.all('/customerPurchaseOrders', function (req, res) {
 	var businessObj, customer;
 
 	//The POST body

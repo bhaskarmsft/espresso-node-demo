@@ -9,7 +9,7 @@ Application.controller('PurchaseOrdersCtrl', [
 		$rootScope.customer = customers[0];
 
 		$scope.controls.requestOrders = function () {
-			$http.post('customerPurchaseOrders', $rootScope.customer).success(function (data) {
+			$http.post('/customerPurchaseOrders', $rootScope.customer).success(function (data) {
 				var ordersByOrderNumber, keys;
 				ordersByOrderNumber = _.indexBy(data, 'order_number');
 				keys = _.keys(ordersByOrderNumber);
@@ -43,7 +43,13 @@ Application.controller('PurchaseOrdersCtrl', [
 			$scope.data.orders.unshift(newOrder);
 
 			$scope.controls.setActiveOrder(0);
-			console.log('addOrder', $scope.data.order);
+		};
+
+		$scope.controls.isActive = function (orderNumber) {
+			if ($rootScope.activeOrderIndex == orderNumber) {
+				return true;
+			}
+			return false;
 		};
 
 		$scope.$on('ActivateOrder', function (event, order) {

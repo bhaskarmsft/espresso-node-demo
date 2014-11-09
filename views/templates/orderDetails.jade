@@ -4,10 +4,12 @@ div(class="span8" ng-controller="OrderDetailsCtrl")
 			div(class="span6")
 				h3 Order \#{{data.order.order_number}}
 			div(class="span6")
-				h3(ng-if="data.order.paid" class="text-success float-right") {{data.status}} ${{data.order.amount_total}} 
-					input(ng-model="data.order.paid" type="checkbox")
-				h3(ng-if="!data.order.paid" class="text-alert float-right") {{data.status}} ${{data.order.amount_total}} 
-					input(ng-model="data.order.paid" type="checkbox")
+				h3(ng-if="data.order.paid" class="text-success float-right") 
+					label(for="po-paid-status" class="display-inline") {{data.status}} ${{data.order.amount_total}} 
+					input(id="po-paid-status" ng-model="data.order.paid" type="checkbox")
+				h3(ng-if="!data.order.paid" class="text-alert float-right") 
+					label(for="po-paid-status" class="display-inline") {{data.status}} ${{data.order.amount_total}} 
+					input(id="po-paid-status" ng-model="data.order.paid" type="checkbox")
 		div(class="row")
 			div(class="span12" ng-if="!params.editMode")
 				p(ng-if="data.order.notes") {{data.order.notes}}

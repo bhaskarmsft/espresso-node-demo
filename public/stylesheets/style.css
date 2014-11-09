@@ -10,6 +10,7 @@ a {
 #container .margin-top-0{ margin-top:0; }
 #body .float-left{ float:left; }
 #body .float-right{ float:right; }
+#body .display-inline{ display:inline; }
 #container .min-h-150{ height:150px; }
 #container .full-width{ width:100%; }
 #container .margin-top-15{ margin-top:15px; }
@@ -31,3 +32,6 @@ table{ width: 100%; }
 thead tr{ width: 100%; }
 thead td{ width: auto; font-weight:bold; }
 .numeric-column{ text-align:right; }
+
+.purchase-order.active{ background:#efefef; }
+.purchase-order.hover-true{ background:#f6f6f6; }

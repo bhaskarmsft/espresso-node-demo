@@ -85,7 +85,9 @@ Application.controller('OrderDetailsCtrl', [
 		};
 
 		$scope.controls.saveLineItem = function (lineItem) {
-			$scope.controls.refreshOrder();
+			$http.post('/put', lineItem).success(function (txSummary) {
+				$scope.controls.refreshOrder();
+			});
 		};
 
 		$scope.controls.saveOrder = function () {

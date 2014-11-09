@@ -8,7 +8,7 @@ div(class="span4")
 					td Total
 					td Paid
 			tbody
-				tr(ng-repeat="order in data.orders" ng-click="controls.setActiveOrder(order.order_number)")
+				tr(class="po-{{order.order_number}} purchase-order {{controls.isActive(order.order_number) && 'active'}} hover-{{hover}}" ng-mouseover="hover=true" ng-mouseleave="hover=false" ng-repeat="order in data.orders" ng-click="controls.setActiveOrder(order.order_number)")
 					td(class="numeric-column") {{order.order_number}}
 					td(class="numeric-column") ${{order.amount_total}}
 					td {{order.paid}}
