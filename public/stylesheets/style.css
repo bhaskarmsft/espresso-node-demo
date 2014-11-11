@@ -35,3 +35,6 @@ thead td{ width: auto; font-weight:bold; }
 
 .purchase-order.active{ background:#efefef; }
 .purchase-order.hover-true{ background:#f6f6f6; }
+.purchase-order{ cursor:pointer; }
+
+.help, .help i{ line-height:54px; vertical-align:middle; float:right; cursor:pointer; }
