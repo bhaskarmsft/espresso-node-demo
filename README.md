@@ -3,6 +3,8 @@ Espresso Node Demo
 
 A sample application built on an [Espresso Logic](http://espressologic.com/) API. This small app demonstrates how the [Espresso Logic SDK](https://www.npmjs.org/package/espressologic) package interacts with rules and resources defined in Logic Designer.
 
+![Alt text](./Entrospect.PNG?raw=true "View")
+
 The Espresso Node Demo operates as a simple customer orders portal, and all the SDK interactions are viewable in [routes/index.js](https://github.com/EspressoLogicCafe/entrospect/blob/master/routes/index.js). 
 ###Getting Started
 
