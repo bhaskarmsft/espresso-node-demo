@@ -1,6 +1,6 @@
 {
-  "name": "entrospect",
-  "version": "0.9.0",
+  "name": "espressodemo",
+  "version": "1.1.0",
   "description": "A sample application built on top of an API generated with Espresso Logic.",
   "scripts": {
     "start": "node bin/www"
@@ -13,7 +13,22 @@
     "Espresso",
     "Logic",
     "Espresso Logic",
-    "Entrospect"
+    "Espresso Demo",
+    "REST",
+    "API",
+    "RESTful",
+    "database",
+    "sql",
+    "mysql",
+    "oracle",
+    "nosql",
+    "postgres",
+    "mongo",
+    "sqlserver",
+    "mobile",
+    "reactive",
+    "strongloop",
+    "express"
   ],
   "bugs": {
     "url": "https://github.com/EspressoLogicCafe/entrospect/issues"

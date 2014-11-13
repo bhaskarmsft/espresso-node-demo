@@ -1,5 +1,5 @@
 div(class="span4")
-	h5 Purchase Orders
+	h5 Purchase Orders: {{customer.name}}
 	div(class="" ng-controller="PurchaseOrdersCtrl")
 		table(class="table bordered")
 			thead
@@ -8,8 +8,10 @@ div(class="span4")
 					td Total
 					td Paid
 			tbody
-				tr(class="po-{{order.order_number}} purchase-order {{controls.isActive(order.order_number) && 'active'}} hover-{{hover}}" ng-mouseover="hover=true" ng-mouseleave="hover=false" ng-repeat="order in data.orders" ng-click="controls.setActiveOrder(order.order_number)")
+				tr(class="po-{{order.order_number}} purchase-order {{controls.isActive(order.order_number) && 'active'}} hover-{{hover}}" ng-mouseover="hover=true" ng-mouseleave="hover=false" ng-repeat="order in data.orders|orderObjectBy:'order_number'" ng-click="controls.setActiveOrder(order.order_number)")
 					td(class="numeric-column") {{order.order_number}}
 					td(class="numeric-column") ${{order.amount_total}}
 					td {{order.paid}}
 		button(class="btn default hide float-right" ng-click="controls.addOrder()") Add Purchase Order
+		div(class="float-right")
+			p Balance: ${{customer.balance}}/${{customer.credit_limit}}

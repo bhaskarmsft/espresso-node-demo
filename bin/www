@@ -5,6 +5,6 @@ var app = require('../app');
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-  console.log('EntroSpect is now initialized');
+  console.log('Espresso Node Demo is now initialized');
   console.log('Please visit http://localhost:' + server.address().port );
 });
