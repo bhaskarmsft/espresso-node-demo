@@ -41,6 +41,10 @@ Application.controller('OrderDetailsCtrl', [
 			$http.post('/del', lineItem).success(function (reply) {
 				lineItems.splice(index, 1);
 				$scope.controls.refreshOrder();
+			})
+			['error'](function (message) {
+				console.log(message);
+				$rootScope.errorDialog(message);
 			});
 		};
 
@@ -87,6 +91,10 @@ Application.controller('OrderDetailsCtrl', [
 		$scope.controls.saveLineItem = function (lineItem) {
 			$http.post('/put', lineItem).success(function (txSummary) {
 				$scope.controls.refreshOrder();
+			})
+			['error'](function (message) {
+				console.log(message);
+				$rootScope.errorDialog(message);
 			});
 		};
 
@@ -98,6 +106,10 @@ Application.controller('OrderDetailsCtrl', [
 			//and it is not strictly speaking a proper RESTful endpoint
 			$http.post('/put', $scope.data.order).success(function (txSummary) {
 				$scope.controls.refreshOrder();
+			})
+			['error'](function (message) {
+				console.log(message);
+				$rootScope.errorDialog(message);
 			});
 		};
 
@@ -153,6 +165,10 @@ Application.controller('OrderDetailsCtrl', [
 			//and it is not strictly speaking a proper RESTful endpoint
 			$http.post('/put', newLineItem).success(function (txSummary) {
 				$scope.controls.refreshOrder();
+			})
+			['error'](function (message) {
+				console.log(message);
+				$rootScope.errorDialog(message);
 			});
 		});
 	}

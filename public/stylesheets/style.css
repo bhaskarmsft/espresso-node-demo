@@ -38,3 +38,7 @@ thead td{ width: auto; font-weight:bold; }
 .purchase-order{ cursor:pointer; }
 
 .help, .help i{ line-height:54px; vertical-align:middle; float:right; cursor:pointer; }
+
+.dialogClose{ position:absolute; bottom:10px; right:10px; }
+.full-height{ height:100%; }
+.window-overlay .content{ height:75% !important; }

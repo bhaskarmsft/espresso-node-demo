@@ -77,9 +77,15 @@ router.post('/put', function (req, res) {
 		res.json(txSummary);
 		res.end();
 	}, function (error) {
-		//reply with the server error
-		res.json(error);
-		res.end();
+		if (entrospect.apiKey == 'readonly') {
+			error.errorMessage = 'This application is using a read only API key, we invite you to register and congigure EntroSpect to complete this action'
+		}
+		
+		//set the status code
+		res.status(error.statusCode);
+
+		//reply with the server error message
+		res.end(error.errorMessage);
 	});
 });
 
@@ -91,7 +97,7 @@ router.post('/del', function (req, res) {
 
 	//A record sent from the front end
 	obj = req.body;
-
+	console.log(entrospect);
 	//Each record provided by the Espresso API includes a unique endpoint for modifying itself
 	objEndpoint = entrospect.endpoint(obj['@metadata'].href);
 
@@ -102,11 +108,16 @@ router.post('/del', function (req, res) {
 		res.json(txSummary);
 		res.end();
 	}, function (error) {
-		//reply with the server error
-		res.json(error);
-		res.end();
+		if (entrospect.apiKey == 'readonly') {
+			error.errorMessage = 'This application is using a read only API key, we invite you to register and congigure EntroSpect to complete this action'
+		}
+
+		//set the status code
+		res.status(error.statusCode);
+
+		//reply with the server error message
+		res.end(error.errorMessage);
 	});
 });
 
 module.exports = router;
-//use express to simplify API for front-end

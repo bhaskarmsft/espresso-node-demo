@@ -1,12 +1,28 @@
 Application.controller('PurchaseOrdersCtrl', [
-	'$rootScope', '$scope', '$http',
-	function ($rootScope, $scope, $http) {
+	'$rootScope', '$scope', '$http', '$compile',
+	function ($rootScope, $scope, $http, $compile) {
 		//user interface methods
 		$scope.controls = {};
 		//user exposed values
 		$scope.data = {};
 
 		$rootScope.customer = customers[0];
+		$rootScope.errorDialog = function (message) {
+			$.Dialog({
+				overlay: true,
+				shadow: true,
+				flat: true,
+				title: 'Warning',
+				padding: 10,
+				content: $compile(
+					'<div class="full-height">' +
+						'<p>' + message + '</p>' +
+						'<button class="btn dialogClose" onclick="$.Dialog.close()">Close</button>' +
+						'<button class="btn"><a href="http://www.espressologic.com/" target="_blank">Espresso Logic</a></button>' +
+						' <button class="btn"><a href="https://sites.google.com/a/espressologic.com/site/docs/live-api/node-sdk/sample-app" target="_blank">Docs</a></button>' +
+					'</div>')($scope)
+			});
+		};
 
 		$scope.controls.requestOrders = function () {
 			$http.post('/customerPurchaseOrders', $rootScope.customer).success(function (data) {
