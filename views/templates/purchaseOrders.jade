@@ -13,5 +13,5 @@ div(class="span4")
 					td(class="numeric-column") ${{order.amount_total}}
 					td {{order.paid}}
 		button(class="btn default hide float-right" ng-click="controls.addOrder()") Add Purchase Order
-		div(class="float-right")
-			p Balance: ${{customer.balance}}/${{customer.credit_limit}}
+		div(class="float-right balance-update-{{params.balanceUpdate}} customer-balance-container")
+			p(class="padding-0 margin-0") Balance: ${{customer.balance}}/${{customer.credit_limit}}

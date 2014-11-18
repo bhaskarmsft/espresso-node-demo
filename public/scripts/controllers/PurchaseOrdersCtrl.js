@@ -1,10 +1,11 @@
 Application.controller('PurchaseOrdersCtrl', [
-	'$rootScope', '$scope', '$http', '$compile',
-	function ($rootScope, $scope, $http, $compile) {
+	'$rootScope', '$scope', '$http', '$compile', '$timeout',
+	function ($rootScope, $scope, $http, $compile, $timeout) {
 		//user interface methods
 		$scope.controls = {};
 		//user exposed values
 		$scope.data = {};
+		$scope.params = {};
 
 		$rootScope.customer = customers[0];
 		$rootScope.errorDialog = function (message) {
@@ -77,6 +78,14 @@ Application.controller('PurchaseOrdersCtrl', [
 
 		$scope.$on('RefreshOrders', function () {
 			$scope.controls.requestOrders();
+		});
+		$rootScope.$watch('customer.balance', function (current, previous) {
+			if (current && current != previous) {
+				$scope.params.balanceUpdate = true;
+				$timeout(function () {
+					$scope.params.balanceUpdate = false
+				}, 1000);
+			}
 		});
 	}
 ]);

@@ -1,6 +1,6 @@
 Application.controller('OrderDetailsCtrl', [
-	'$rootScope', '$scope', '$http', '$compile',
-	function ($rootScope, $scope, $http, $compile) {
+	'$rootScope', '$scope', '$http', '$compile', '$timeout',
+	function ($rootScope, $scope, $http, $compile, $timeout) {
 		//user interface methods
 		$scope.controls = {};
 		//user exposed  values
@@ -178,5 +178,21 @@ Application.controller('OrderDetailsCtrl', [
 				$rootScope.errorDialog(message);
 			});
 		});
+
+		$scope.$watch('data.order', function (current, previous) {
+			//is data.order populated
+			if (current && previous) {
+				//if populated, is this a new selection
+				if (current.order_number == previous.order_number) {
+					//this is not a new selection
+					if (current.amount_total != previous.amount_total) {
+						$scope.params.updateOrderBalance = true;
+						$timeout(function () {
+							$scope.params.updateOrderBalance = false;
+						}, 1000)
+					}
+				}
+			}
+		}, true);
 	}
 ]);
