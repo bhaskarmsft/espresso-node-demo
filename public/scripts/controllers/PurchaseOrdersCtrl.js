@@ -19,8 +19,8 @@ Application.controller('PurchaseOrdersCtrl', [
 					'<div class="full-height">' +
 						'<p>' + message + '</p>' +
 						'<button class="btn dialogClose" onclick="$.Dialog.close()">Close</button>' +
-						'<button class="btn"><a href="http://www.espressologic.com/" target="_blank">Espresso Logic</a></button>' +
-						' <button class="btn"><a href="https://sites.google.com/a/espressologic.com/site/docs/live-api/node-sdk/sample-app" target="_blank">Docs</a></button>' +
+						'<a class="btn button" target="_blank" href="http://www.espressologic.com/">Espresso Logic</a>' +
+						' <a class="btn button" target="_blank" href="https://sites.google.com/a/espressologic.com/site/docs/live-api/node-sdk/sample-app">Docs</a>' +
 					'</div>')($scope)
 			});
 		};
