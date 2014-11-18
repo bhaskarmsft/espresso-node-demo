@@ -26,6 +26,9 @@ Application.controller('PurchaseOrdersCtrl', [
 
 		$scope.controls.requestOrders = function () {
 			$http.post('/customerPurchaseOrders', $rootScope.customer).success(function (data) {
+				$http.get('/customer').success(function (customers) {
+					$rootScope.customer = customers[0];
+				});
 				var ordersByOrderNumber, keys;
 				ordersByOrderNumber = _.indexBy(data, 'order_number');
 				keys = _.keys(ordersByOrderNumber);

@@ -18,6 +18,18 @@ router.get('/', function (req, res) {
 			customers: list
 		});
 		res.end();
+	},
+	function (error) {
+		console.log(error);
+	});
+});
+
+router.get('/customer', function (req, res) {
+	var customers;
+	customers = entrospect.endpoint('customer').get({pagesize:1});
+	customers.then(function (list) {
+		res.json(list);
+		res.end();
 	});
 });
 

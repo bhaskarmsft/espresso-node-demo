@@ -16,4 +16,4 @@ Then visit:
     http://localhost:3000
 
 
-And you should be up and running with the read only evaluation API. To use a broader access API, please [sign up for your own evaluation account](http://www.espressologic.com/) and point the final line of [config.js](https://github.com/EspressoLogicCafe/entrospect/blob/master/config.js) to your own evaluation project API url and API key. For a more thorough description of this project, [please see our documentation](https://sites.google.com/a/espressologic.com/site/docs/live-api/node-sdk/sample-app).
+And you should be up and running with the read only evaluation API. To use a broader access API, please [sign up for your own evaluation account](http://www.espressologic.com/) and point the final line of [config.js](https://github.com/EspressoLogicCafe/entrospect/blob/master/config.js) to your own evaluation project API url and username/password. For a more thorough description of this project, [please see our documentation](https://sites.google.com/a/espressologic.com/site/docs/live-api/node-sdk/sample-app).
