@@ -8,13 +8,17 @@ Application.controller('LineItemCtrl', [
 		//user interface methods acting on $scope.data
 		$scope.controls = {};
 
+		$scope.data.products = {};
+		$scope.data.product = {};
+		$scope.data.quantity = 1;
+
 		//Request all products for selection
 		$http.get('/products').success(function (products) {
 			var productsByName = _.indexBy(products, 'name');
 
 			//set view output
 			$scope.data.products = productsByName;
-			if (angular.equals($scope.params, {})) {
+			if (angular.element('.adding-lineItem').length) {
 				//Adding a new line item
 				
 				//initially grab the first product
@@ -32,7 +36,7 @@ Application.controller('LineItemCtrl', [
 		//This just serves to estimate the price
 		//the demo API does discount items at a quantity specified in the project rules
 		$scope.controls.updatePrice = function () {
-			$scope.data.estimatedPrice = $scope.data.product.price * $scope.data.quantity;
+			$scope.data.estimatedPrice = ($scope.data.product.price * $scope.data.quantity) || 0;
 		};
 
 		//Close the dialog and broadcast UpdateLineItem or AddLineItem

@@ -18,8 +18,8 @@ Application.controller('PurchaseOrdersCtrl', [
 				content: $compile(
 					'<div class="full-height">' +
 						'<p>' + message + '</p>' +
+						'<p>You may be using a public readonly project API, please register for your personal <a target="_blank" href="http://www.espressologic.com">Espresso Logic API here</a></p>' +
 						'<button class="btn dialogClose" onclick="$.Dialog.close()">Close</button>' +
-						'<a class="btn button" target="_blank" href="http://www.espressologic.com/">Espresso Logic</a>' +
 						' <a class="btn button" target="_blank" href="https://sites.google.com/a/espressologic.com/site/docs/live-api/node-sdk/sample-app">Docs</a>' +
 					'</div>')($scope)
 			});

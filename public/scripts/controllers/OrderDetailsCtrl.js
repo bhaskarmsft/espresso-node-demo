@@ -39,6 +39,10 @@ Application.controller('OrderDetailsCtrl', [
 
 		//Immediately delete this LineItem[index] and remove it from the list
 		$scope.controls.delLineItem = function (index) {
+			$.Notify({
+				content: 'Deleting . . .',
+				timeout: '1000'
+			});
 			var lineItems, lineItem;
 			lineItems = $scope.data.lineItems;
 			lineItem = lineItems[index];
@@ -63,7 +67,7 @@ Application.controller('OrderDetailsCtrl', [
 				padding: 10,
 				width: 300,
 				content: $compile(
-					'<div ng-controller="LineItemCtrl">' +
+					'<div ng-controller="LineItemCtrl" class="adding-lineItem">' +
 						'<label>Product:</label> <select ng-model="data.product" ng-options="product.name for (index, product) in data.products"></select>' +
 						'<label>Quantity:</label> <input type="number" ng-model="data.quantity" />' +
 						'<label>Estimated Price:<label> <span class="text-muted">{{data.estimatedPrice}}</span>' +
@@ -150,7 +154,7 @@ Application.controller('OrderDetailsCtrl', [
 			return angular.copy($scope.data.order['@metadata'].href).replace(projectFragment, '');
 		};
 
-		$scope.$on('AddLineItem', function (event, data) {
+		$scope.$on('AddLineItem', _.throttle(function (event, data) {
 			var newLineItem, metadata;
 
 			newLineItem = {
@@ -177,7 +181,7 @@ Application.controller('OrderDetailsCtrl', [
 				console.log(message);
 				$rootScope.errorDialog(message);
 			});
-		});
+		}, 500));
 
 		$scope.$watch('data.order', function (current, previous) {
 			//is data.order populated
