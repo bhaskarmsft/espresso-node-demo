@@ -22,21 +22,23 @@ div(class="span8" ng-controller="OrderDetailsCtrl")
 				table(class="table striped")
 					thead
 						tr
+							td Line Item #
 							td Product
 							td Quantity
 							td Price/Item
-							td Line Total
+							td Total
 							td Actions
 					tbody
-						tr(ng-repeat="lineItem in data.order.LineItems")
+						tr(ng-repeat="(index, lineItem) in data.order.LineItems|orderObjectBy:'lineitem_id'")
+							td {{lineItem.lineitem_id}}
 							td {{lineItem.Product.name}}
 							td(class="numeric-column") {{lineItem.qty_ordered}}
 							td(class="numeric-column") ${{lineItem.product_price}}
 							td(class="numeric-column") ${{lineItem.amount}}
 							td
-								button(class="btn inverse" ng-click="controls.editLineItem($index)") Edit
+								button(class="btn inverse small" ng-click="controls.editLineItem(lineItem.lineitem_id)") Edit
 								span  
-								button(class="btn danger" ng-click="controls.delLineItem($index)") Delete
+								button(class="btn danger small" ng-click="controls.delLineItem(lineItem.lineitem_id)") Delete
 		div(class="row")
 			div(class="span12")
 				div(class="float-left")

@@ -1,13 +1,13 @@
 {
   "name": "espressodemo",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "A sample application built Espresso Logic API.",
   "scripts": {
     "start": "node bin/www"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EspressoLogicCafe/entrospect.git"
+    "url": "https://github.com/EspressoLogicCafe/espresso-node-demo.git"
   },
   "keywords": [
     "Espresso",
@@ -31,7 +31,7 @@
     "express"
   ],
   "bugs": {
-    "url": "https://github.com/EspressoLogicCafe/entrospect/issues"
+    "url": "https://github.com/EspressoLogicCafe/espresso-node-demo/issues"
   },
   "dependencies": {
     "express": "~4.9.0",

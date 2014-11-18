@@ -8,12 +8,16 @@ Application.controller('OrderDetailsCtrl', [
 		//internal values 
 		$scope.params = {};
 
+		$scope.$watch('data.order.LineItems', function (current) {
+			$scope.data.lineItems = _.indexBy(current, 'lineitem_id');
+		});
+
 		//Popup Edit Item Dialog
-		$scope.controls.editLineItem = function (index) {
+		$scope.controls.editLineItem = function (lineitem_id) {
 			//set necessary params for modal
-			$scope.params.productName = $scope.data.order.LineItems[index].Product.name;
-			$scope.params.lineItemIndex = index;
-			$scope.params.lineItem = $scope.data.order.LineItems[index];
+			$scope.params.productName = $scope.data.lineItems[lineitem_id].Product.name;
+			$scope.params.lineItemIndex = lineitem_id;
+			$scope.params.lineItem = $scope.data.lineItems[lineitem_id];
 
 			//init modal
 			$.Dialog({
@@ -36,14 +40,14 @@ Application.controller('OrderDetailsCtrl', [
 		//Immediately delete this LineItem[index] and remove it from the list
 		$scope.controls.delLineItem = function (index) {
 			var lineItems, lineItem;
-			lineItems = $scope.data.order.LineItems;
+			lineItems = $scope.data.lineItems;
 			lineItem = lineItems[index];
 			$http.post('/del', lineItem).success(function (reply) {
-				lineItems.splice(index, 1);
+				delete lineItems[index];
+				//lineItems.splice(index, 1);
 				$scope.controls.refreshOrder();
 			})
 			['error'](function (message) {
-				console.log(message);
 				$rootScope.errorDialog(message);
 			});
 		};
@@ -105,10 +109,13 @@ Application.controller('OrderDetailsCtrl', [
 			//The /put endpoint is a demonstration of an update PUT request using the npm package,
 			//and it is not strictly speaking a proper RESTful endpoint
 			$http.post('/put', $scope.data.order).success(function (txSummary) {
+				$.Notify({
+					content: 'Order Saved',
+					timeout: '3500'
+				});
 				$scope.controls.refreshOrder();
 			})
 			['error'](function (message) {
-				console.log(message);
 				$rootScope.errorDialog(message);
 			});
 		};
@@ -130,7 +137,7 @@ Application.controller('OrderDetailsCtrl', [
 
 		$scope.$on('UpdateLineItem', function (event, data) {
 			var lineItem;
-			lineItem = $scope.data.order.LineItems[data.index];
+			lineItem = $scope.data.lineItems[data.index];
 			lineItem.qty_ordered = data.quantity;
 			lineItem.product_number = data.product.product_number;
 			$scope.controls.saveLineItem(lineItem);
